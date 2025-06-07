@@ -1,4 +1,3 @@
-use components::text::Text;
 use leptos::prelude::*;
 use screens::home::sinopse::Sinopse;
 
