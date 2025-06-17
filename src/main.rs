@@ -1,9 +1,9 @@
 use leptos::prelude::*;
-use screens::home::sinopse::Sinopse;
+use screens::{circulo_vip::CirculoVip, home::sinopse::Sinopse};
 
 mod components;
 mod screens;
 
 fn main() {
-    leptos::mount::mount_to_body(|| view! { <Sinopse/> });
+    leptos::mount::mount_to_body(|| view! { <CirculoVip/> });
 }

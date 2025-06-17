@@ -6,6 +6,7 @@ pub enum TextSize {
     Small,
     Details,
     Terms,
+    BigTitle,
     H1,
     H2,
     H3,
@@ -40,18 +41,19 @@ pub fn Text(
         Some(TextSize::Small) => "text-small",
         Some(TextSize::Details) => "text-details",
         Some(TextSize::Terms) => "text-terms",
+        Some(TextSize::BigTitle) => "text-big-title",
         Some(TextSize::H1) => "text-h1",
         Some(TextSize::H2) => "text-h2",
         Some(TextSize::H3) => "text-h3",
         None => "text-big",
     };
-    let weitght_class = match weight {
+    let weight_class = match weight {
         Some(TextWeight::Normal) => "font-normal",
         Some(TextWeight::Bold) => "font-bold",
         None => "font-normal",
     };
     let class = class.unwrap_or_default();
-    let final_class = format!("{} {} {}", size_class, weitght_class, class).trim().to_string();
+    let final_class = format!("font-[Lora] {} {} {}", size_class, weight_class, class).trim().to_string();
 
     match r#as {
         Some(ElementType::Span) => view! {

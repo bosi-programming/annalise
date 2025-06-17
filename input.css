@@ -2,6 +2,7 @@
 
 html {
   font-size: 16px;
+  line-height: 1.15;
 }
 
 body, #storybook-root, .sb-show-main.sb-main-padded {
@@ -16,7 +17,28 @@ body, #storybook-root, .sb-show-main.sb-main-padded {
   --text-small: 0.75rem; 
   --text-details: 0.5rem; 
   --text-terms: 0.4375rem; 
+  --text-big-title: 48px; 
   --text-h1: 1.875rem; 
   --text-h2: 1.25rem; 
-  --text-h3: 1rem; 
+  --text-h3: 1rem; /* 16px */
+
+  --color-purple: #0B0119;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: asset-url('assets/fonts/Lora/Lora-Bold.woff') format('truetype'),
+         asset-url('assets/fonts/Lora/Lora-Bold.woff2') format('truetype'),
+         asset-url('assets/fonts/Lora/Lora-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: asset-url('assets/fonts/Lora/Lora-Regular.woff') format('truetype'),
+         asset-url('assets/fonts/Lora/Lora-Regular.woff2') format('truetype'),
+         asset-url('assets/fonts/Lora/Lora-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
 }
