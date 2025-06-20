@@ -1,3 +1,4 @@
+use components::form::Form;
 use components::title::Title;
 use leptos::IntoView;
 use leptos::prelude::*;
@@ -11,12 +12,13 @@ pub mod components;
 pub fn CirculoVip() -> impl IntoView {
     provide_meta_context();
     view! {
-        <div class="bg-purple w-screen h-screen px-8">
+        <div class="bg-purple w-screen h-screen pt-10 px-8">
             <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <Title class="text-white" />
+            <Title class="text-white leading-none" />
             <Text class="text-white mt-10 mr-16">
                 "Entre para o Círculo VIP e seja a primeira a receber novidades sobre o universo de #ADE. Prometo pela Lua que brilha no céu: nada de spam."
             </Text>
+            <Form />
         </div>
     }
 }

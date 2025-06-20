@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 html {
+  font-family: 'Lora';
   font-size: 16px;
   line-height: 1.15;
 }
 
 body, #storybook-root, .sb-show-main.sb-main-padded {
+  font-family: 'Lora';
   font-family: inherit;
   padding: 0;
   margin: 0;
@@ -23,6 +25,8 @@ body, #storybook-root, .sb-show-main.sb-main-padded {
   --text-h3: 1rem; /* 16px */
 
   --color-purple: #0B0119;
+  --color-purple-light: #9F5EF9;
+  --color-input: #392A58;
 }
 
 @font-face {
