@@ -3,7 +3,7 @@ use leptos::prelude::*;
 use crate::components::text::{ElementType, Text, TextSize, TextWeight};
 
 #[component]
-pub fn Title(
+pub fn Heading(
     #[prop(into, optional)] class: Option<String>,
 ) -> impl IntoView {
     view! {

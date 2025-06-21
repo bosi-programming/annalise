@@ -4,6 +4,9 @@ html {
   font-family: 'Lora';
   font-size: 16px;
   line-height: 1.15;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
 }
 
 body, #storybook-root, .sb-show-main.sb-main-padded {
@@ -11,6 +14,7 @@ body, #storybook-root, .sb-show-main.sb-main-padded {
   font-family: inherit;
   padding: 0;
   margin: 0;
+  min-height: 100vh;
 }
 
 @theme {
