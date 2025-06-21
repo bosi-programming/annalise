@@ -1,21 +1,10 @@
-use leptos::{ev::SubmitEvent, leptos_dom::logging::console_log, prelude::*};
-use regex::Regex;
-use serde::Deserialize;
-use validator::{Validate, ValidationError};
+mod utils;
+mod validation;
+use leptos::{ev::SubmitEvent, prelude::*};
+use validation::FormData;
 
+use validator::Validate;
 use crate::components::{button::Button, input::Input, text::{Text, TextSize, TextWeight}};
-
-#[derive(Debug, Validate, Deserialize)]
-struct FormData {
-    #[validate(custom(function = "validate_name", message = "Digite seu nome completo"))]
-    name: String,
-    #[validate(custom(function = "validate_date", message = "A data de nascimento deve estar no formato DD/MM/AAAA"))]
-    dob: String,
-    #[validate(email(message = "Digite um e-mail válido"))]
-    email: String,
-    #[validate(custom(function = "validate_phone", message = "Digite um número de celular válido no formato (DD) 00000-0000"))]
-    phone: String,
-}
 
 #[derive(Debug,Clone)]
 struct FormErrors {
@@ -24,35 +13,6 @@ struct FormErrors {
     email: Option<String>,
     phone: Option<String>,
 }
-
-
-fn validate_name(name: &str) -> Result<(), ValidationError> {
-    if name.is_empty() {
-        return Ok(());
-    }
-    if name.len() < 3 {
-        return Err(ValidationError::new("Digite seu nome completo"));
-    }
-    Ok(())
-}
-fn validate_date(date: &str) -> Result<(), ValidationError> {
-    if date.is_empty() {
-        return Ok(());
-    }
-    let date_regex = Regex::new(r"^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$").unwrap();
-    if !date_regex.is_match(date) {
-        return Err(ValidationError::new(""));
-    }
-    Ok(())
-}
-fn validate_phone(date: &str) -> Result<(), ValidationError> {
-    let date_regex = Regex::new(r"\(\d{2}\)\d{5}-\d{4}").unwrap();
-    if !date_regex.is_match(date) {
-        return Err(ValidationError::new(""));
-    }
-    Ok(())
-}
-
 
 #[component]
 pub fn Form() -> impl IntoView {
@@ -75,7 +35,6 @@ pub fn Form() -> impl IntoView {
             email: email.get(),
             phone: phone.get(),
         };
-        console_log(&format!("Form data: {:?}", form_data));
         form_data.validate().map_err(|e| {
             let mut temp_errors = FormErrors {
                 name: None,
@@ -93,13 +52,11 @@ pub fn Form() -> impl IntoView {
                 }
             }
             set_errors.set(temp_errors);
-            console_log(&format!("State error: {:?}", errors.get()));
-            console_log(&format!("Validation error: {:?}", e.errors()));
         }).ok();
     };
 
     view! {
-        <form on:submit=on_submit class="my-17 grid grid-cols-1 gap-3">
+        <form on:submit=on_submit class="py-17 grid grid-cols-1 gap-3">
             <Input placeholder="Nome completo".to_string() value={name} set_value={set_name} name="name".to_string() />
             <Show when=move || errors.read().name.is_some()>
                 <Text class="text-err ml-4" size=TextSize::Small>
@@ -128,3 +85,4 @@ pub fn Form() -> impl IntoView {
         </form>
     }
 }
+

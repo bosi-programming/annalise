@@ -1,6 +1,5 @@
 use components::form::Form;
 use components::heading::Heading;
-use leptos::IntoView;
 use leptos::prelude::*;
 use leptos_meta::*;
 
