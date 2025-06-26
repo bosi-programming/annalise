@@ -10,3 +10,6 @@ leptos_meta = "0.8.2"
 regex = "1.11.1"
 serde = "1.0.219"
 validator = { version = "0.20", features = ["derive"] }
+wasm-bindgen = "0.2.100"
+wasm-bindgen-futures = "0.4.50"
+web-sys = { version = "0.3.77", features = ["Window", "Request", "Response", "RequestInit", "RequestMode"] }
