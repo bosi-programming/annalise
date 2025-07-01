@@ -1,5 +1,6 @@
 use components::form::Form;
 use components::heading::Heading;
+use components::newsletter::Newsletter;
 use leptos::prelude::*;
 use leptos_meta::*;
 
@@ -21,6 +22,7 @@ pub fn CirculoVip() -> impl IntoView {
                 "Entre para o Círculo VIP e seja a primeira a receber novidades sobre o universo de #ADE. Prometo pela Lua que brilha no céu: nada de spam."
             </Text>
             <Form />
+            <Newsletter class="pb-30" />
         </div>
     }
 }
