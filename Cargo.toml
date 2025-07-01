@@ -7,6 +7,7 @@ edition = "2024"
 console_error_panic_hook = "0.1.7"
 leptos = { version = "0.8.2", features = ["csr"] }
 leptos_meta = "0.8.2"
+leptos_router = "0.8.2"
 regex = "1.11.1"
 serde = "1.0.219"
 validator = { version = "0.20", features = ["derive"] }
