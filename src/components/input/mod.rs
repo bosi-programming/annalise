@@ -1,11 +1,14 @@
 use leptos::prelude::*;
 
+use crate::components::text::{Text, TextSize};
+
 #[component]
 pub fn Input(
     #[prop(into, optional)] class: Option<String>,
     #[prop(into, optional)] placeholder: Option<String>,
     #[prop(into, optional)] r#type: Option<String>,
     #[prop(into, optional)] disabled: bool,
+    error: ReadSignal<String>,
     name: String,
     value: ReadSignal<String>,
     set_value: WriteSignal<String>
@@ -15,14 +18,21 @@ pub fn Input(
     let r#type = r#type.unwrap_or("text".to_string());
 
     view! {
-        <input
-            name=name
-            autocomplete="on"
-            bind:value=(value, set_value)
-            type=r#type
-            class=final_class
-            placeholder=placeholder
-            disabled=disabled
-        />
+        <div>
+            <input
+                name=name
+                autocomplete="on"
+                bind:value=(value, set_value)
+                type=r#type
+                class=final_class
+                placeholder=placeholder
+                disabled=disabled
+            />
+            <Show when=move || !error.read().is_empty()>
+                <Text class="text-err ml-4" size=TextSize::Small>
+                    {error}
+                </Text>
+            </Show>
+        </div>
     }
 }
