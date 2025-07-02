@@ -43,7 +43,7 @@ pub fn Form() -> impl IntoView {
     };
 
     view! {
-        <form on:submit=on_submit class="py-17 grid grid-cols-1 gap-3">
+        <form on:submit=on_submit class="py-17 lg:py-0 grid grid-cols-1 gap-3">
             <Input placeholder="Nome completo".to_string() value={name} set_value={set_name} name="name".to_string() error={name_error} />
             <Input placeholder="Data de nascimento: DD/MM/AAAA".to_string() value={dob} set_value={set_dob} name="bday".to_string() error={dob_error}/>
             <Input placeholder="E-mail*".to_string() value={email} set_value={set_email} name="email".to_string() error={email_error} />

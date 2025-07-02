@@ -9,7 +9,7 @@ pub mod social;
 #[component]
 pub fn Footer() -> impl IntoView {
     view! {
-        <div class="px-8">
+        <div class="lg:px-30 px-8">
             <Newsletter class="pb-22" />
             <Social />
             <Text class="text-white text-center" size={TextSize::Small}>

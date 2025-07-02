@@ -49,7 +49,7 @@ pub fn Newsletter(
             <Text class="text-white leading-none text-center pb-10">
                 "Vamos ficar pertinho? Compartilho por email o processo de escrita, recomendações literárias, material extra do livro e fotos do Chicó."
             </Text>
-            <form on:submit=on_submit class="flex items-center">
+            <form on:submit=on_submit class="flex items-center max-w-md m-auto">
                 <Email placeholder="Email" name="email".into() value=email set_value=set_email class="flex-auto w-10" />
                 <Button r#type="submit" class="rounded-none rounded-e-full flex-none">
                     "Enviar"
