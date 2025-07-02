@@ -1,4 +1,4 @@
-use leptos::{ev::{Event, SubmitEvent}, prelude::*};
+use leptos::{ev::SubmitEvent, prelude::*};
 use validator::Validate;
 use serde::Deserialize;
 
@@ -63,4 +63,5 @@ pub fn Newsletter(
         </div>
     }
 }
+
 
