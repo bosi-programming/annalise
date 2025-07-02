@@ -8,13 +8,14 @@ use crate::screens::circulo_vip::CirculoVip;
 #[component]
 pub fn App() -> impl IntoView {
     view! {
-      <Router>
-        <main>
-          <Routes fallback=|| "Not found.">
-            <Route path=path!("/circulo-vip") view=CirculoVip/>
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
+        <div class="bg-purple">
+            <Router>
+                <Routes fallback=|| "Not found.">
+                    <Route path=path!("/") view=CirculoVip/>
+                    <Route path=path!("/circulo-vip") view=CirculoVip/>
+                </Routes>
+            </Router>
+            <Footer />
+        </div>
     }
 }

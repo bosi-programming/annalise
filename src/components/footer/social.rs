@@ -4,7 +4,7 @@ use leptos:: prelude::*;
 #[component]
 pub fn Social() -> impl IntoView {
     view! {
-        <div class="pb-7 grid grid-cols-4 gap-9">
+        <div class="mx-auto w-fit pb-7 grid grid-cols-4 gap-9">
             <AmazonIcon />
             <BlueskyIcon />
             <InstagramIcon />
