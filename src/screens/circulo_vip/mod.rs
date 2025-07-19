@@ -11,10 +11,7 @@ pub mod components;
 pub fn CirculoVip() -> impl IntoView {
     provide_meta_context();
     view! {
-        <main class="lg:grid lg:grid-cols-2 lg:py-40 lg:gap-30 lg:px-30 h-full pt-10 px-8">
-            <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <Meta charset="UTF-8"/>
-            <Meta name="author" content="Felipe Azevedo Bosi"/>
+        <main class="lg:grid lg:grid-cols-2 lg:py-45 lg:mb-13 lg:gap-30 lg:px-30 h-full pt-10 px-8">
             <Title text="Círculo VIP - #ADE" />
             <div>
                 <Heading class="text-white leading-none" />

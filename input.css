@@ -32,6 +32,7 @@ body, #storybook-root, .sb-show-main.sb-main-padded {
   --color-purple: #0B0119;
   --color-purple-light: #9F5EF9;
   --color-input: #392A58;
+  --color-bg-header: rgba(0,0,0,0.5);
 }
 
 @font-face {
