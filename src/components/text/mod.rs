@@ -1,5 +1,6 @@
 use leptos::prelude::*;
 
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum TextSize {
     Big,
     Medium,
@@ -7,17 +8,19 @@ pub enum TextSize {
     Details,
     Terms,
     BigTitle,
+    BiggerTitle,
     H1,
     H2,
     H3,
 }
 
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum TextWeight {
     Normal,
     Bold,
 }
 
-#[derive(Clone, Default)]
+#[derive(Debug, Copy, Clone, Default, PartialEq)]
 pub enum ElementType {
     Span,
     #[default]
@@ -29,19 +32,20 @@ pub enum ElementType {
 
 #[component]
 pub fn Text(
-    #[prop(into, optional)] size: Option<TextSize>,
+    #[prop(into, optional)] size: Signal<Option<TextSize>>,
     #[prop(into, optional)] weight: Option<TextWeight>,
     #[prop(into, optional)] class: Option<String>,
     #[prop(into, optional)] r#as: Option<ElementType>,
     children: Children,
 ) -> impl IntoView {
-    let size_class = match size {
+    let size_class = move || match *size.read() {
         Some(TextSize::Big) => "text-big",
         Some(TextSize::Medium) => "text-medium",
         Some(TextSize::Small) => "text-small",
         Some(TextSize::Details) => "text-details",
         Some(TextSize::Terms) => "text-terms",
         Some(TextSize::BigTitle) => "text-big-title",
+        Some(TextSize::BiggerTitle) => "text-bigger-title",
         Some(TextSize::H1) => "text-h1",
         Some(TextSize::H2) => "text-h2",
         Some(TextSize::H3) => "text-h3",
@@ -53,11 +57,11 @@ pub fn Text(
         None => "font-normal",
     };
     let class = class.unwrap_or_default();
-    let final_class = format!("font-[Lora] {} {} {}", size_class, weight_class, class).trim().to_string();
+    let final_class = move || format!("font-[Lora] {} {} {}", size_class(), weight_class, class).trim().to_string();
 
     match r#as {
         Some(ElementType::Span) => view! {
-                <span class=final_class>
+                <span class={move || final_class()}>
                     {children()}
                 </span>
             }.into_any(),
