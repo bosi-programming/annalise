@@ -12,7 +12,7 @@ pub fn CirculoVipBoasVindas() -> impl IntoView {
     let title_size = Signal::derive( move || if is_large_screen() {TextSize::BiggerTitle} else {TextSize::BigTitle});
 
     view! {
-        <main class="lg:grid lg:grid-cols-2 lg:py-45 lg:mb-13 lg:gap-30 lg:px-30 h-full pt-10 px-8">
+        <main class="lg:grid lg:grid-cols-2 lg:py-45 lg:gap-30 lg:px-30 lg:h-[calc(100dvh-81px)] max-sm:min-h-[calc(100dvh-65px)] h-full pt-10 px-8">
             <Title text="Círculo VIP - Boas Vindas" />
             <div>
                 <Text r#as=ElementType::H1 size={title_size} weight=TextWeight::Bold class="text-white mt-10 mr-16">
