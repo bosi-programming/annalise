@@ -26,7 +26,7 @@ pub fn App() -> impl IntoView {
     let (_icon, _) = use_favicon_with_options(
         UseFaviconOptions::default().new_icon(
             Signal::derive(move || {
-                Some((if is_dark.get() { "/assets/favicon.png" } else { "/assets/favicon-light.png" }).to_string())
+                Some((if is_dark.get() { "/favicon.png" } else { "/favicon-light.png" }).to_string())
             }),
         )
     );

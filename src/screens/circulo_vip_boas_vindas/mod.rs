@@ -23,6 +23,7 @@ pub fn CirculoVipBoasVindas() -> impl IntoView {
                 </Text>
                 <Button class="mt-10"><a href="/circulo-vip">"Voltar para formulário"</a></Button>
             </div>
+            <img src="/star.gif" />
         </main>
     }
 }
