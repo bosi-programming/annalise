@@ -25,12 +25,14 @@ body, #storybook-root, .sb-show-main.sb-main-padded {
   --text-terms: 0.4375rem; 
   --text-big-title: 48px; 
   --text-bigger-title: 67px; 
+  --text-even-bigger-title: 96px; 
   --text-h1: 1.875rem; 
   --text-h2: 1.25rem; 
   --text-h3: 1rem; /* 16px */
 
   --color-err: #FF8861;
   --color-purple: #0B0119;
+  --color-purple-secondary: #2B1D45;
   --color-purple-light: #9F5EF9;
   --color-input: #392A58;
   --color-bg-header: rgba(0,0,0,0.5);
