@@ -12,7 +12,7 @@ pub fn CirculoVipBoasVindas() -> impl IntoView {
     let title_size = Signal::derive( move || if is_large_screen() {TextSize::EvenBiggerTitle} else {TextSize::BigTitle});
 
     view! {
-        <main class="bg-[url(/starbg.gif)] bg-blend-color-burn bg-purple-900 lg:h-[calc(100dvh-81px)] flex flex-col justify-center lg:justify-center lg:gap-8 lg:px-26 h-full lg:pt-10 px-8 max-lg:min-h-[calc(100dvh-65px)]">
+        <main class="bg-[url(/starbg.gif)] bg-blend-color-burn bg-purple-900 lg:h-[calc(100dvh-81px)] flex flex-col justify-center lg:justify-center lg:gap-8 bg-cover lg:px-26 h-full lg:pt-10 px-8 max-lg:min-h-[calc(100dvh-65px)]">
             <div class="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-end">
                 <Title text="Círculo VIP - Boas Vindas" />
                 <div>

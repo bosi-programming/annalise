@@ -46,7 +46,6 @@ pub fn App() -> impl IntoView {
             <Meta charset="UTF-8"/>
             <Meta name="author" content="Felipe Azevedo Bosi"/>
             <Header />
-            <div class="max-w-7xl m-auto">
                 <Router>
                     <Routes fallback=|| "Not found.">
                         <Route path=path!("/") view=CirculoVip/>
@@ -54,9 +53,10 @@ pub fn App() -> impl IntoView {
                         <Route path=path!("/circulo-vip/boas-vindas") view=CirculoVipBoasVindas/>
                     </Routes>
                 </Router>
-            <Show when={move || should_hide_footer}>
-                <Footer />
-            </Show>
+            <div class="max-w-7xl m-auto">
+                <Show when={move || should_hide_footer}>
+                    <Footer />
+                </Show>
             </div>
         </div>
     }
