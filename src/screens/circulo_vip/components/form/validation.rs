@@ -1,8 +1,8 @@
 use validator::Validate;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::utils::{validate_date, validate_name, validate_phone};
 
-#[derive(Debug, Validate, Deserialize)]
+#[derive(Debug, Validate, Deserialize, Serialize)]
 pub struct FormData {
     #[validate(custom(function = "validate_name", message = "Digite seu nome completo"))]
     pub name: String,

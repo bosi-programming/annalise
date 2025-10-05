@@ -1,3 +1,4 @@
+use leptos::leptos_dom::logging::console_log;
 use validator::ValidationError;
 use regex::Regex;
 
@@ -20,9 +21,9 @@ pub fn validate_date(date: &str) -> Result<(), ValidationError> {
     }
     Ok(())
 }
-pub fn validate_phone(date: &str) -> Result<(), ValidationError> {
-    let date_regex = Regex::new(r"\(\d{2}\)\d{5}-\d{4}").unwrap();
-    if !date_regex.is_match(date) {
+pub fn validate_phone(phone: &str) -> Result<(), ValidationError> {
+    let phone_regex = Regex::new(r"\(\d{2}\)\d{5}[-| ]\d{4}|\d{11}|\d{2} ?\d{5}[-| ]?\d{4}").unwrap();
+    if !phone_regex.is_match(phone) {
         return Err(ValidationError::new(""));
     }
     Ok(())

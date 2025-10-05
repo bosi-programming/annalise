@@ -4,6 +4,7 @@ use leptos::prelude::*;
 mod components;
 mod screens;
 mod app;
+mod env;
 
 fn main() {
     console_error_panic_hook::set_once();
