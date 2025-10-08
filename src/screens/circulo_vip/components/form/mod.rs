@@ -1,7 +1,7 @@
 mod utils;
 mod validation;
 use gloo_net::http::Request;
-use leptos::{ev::SubmitEvent, leptos_dom::logging::console_log, prelude::*, task::spawn_local};
+use leptos::{ev::SubmitEvent, prelude::*, task::spawn_local};
 use serde::Serialize;
 use validation::FormData;
 
@@ -76,9 +76,9 @@ pub fn Form() -> impl IntoView {
     view! {
         <form on:submit=on_submit class="py-17 lg:py-0 grid grid-cols-1 gap-3">
             <Input placeholder="Nome completo".to_string() value={name} set_value={set_name} name="name".to_string() error={name_error} />
-            <Input placeholder="Data de nascimento: DD/MM/AAAA".to_string() value={dob} set_value={set_dob} name="bday".to_string() error={dob_error}/>
+            <Input placeholder="Data de nascimento: DD/MM/AAAA".to_string() value={dob} set_value={set_dob} name="bday".to_string() error={dob_error} onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" />
             <Input placeholder="E-mail*".to_string() value={email} set_value={set_email} name="email".to_string() error={email_error} />
-            <Input placeholder="Celular: (DD)00000-0000*".to_string() value={phone} set_value={set_phone} name="tel-national".to_string() error={phone_error} />
+            <Input placeholder="Celular: (DD)00000-0000*".to_string() value={phone} set_value={set_phone} pattern="\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}" name="tel-national".to_string() error={phone_error} />
             <Button r#type="submit".to_string()><Text weight=TextWeight::Bold>Entrar para o Círculo VIP</Text></Button>
         </form>
     }

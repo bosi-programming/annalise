@@ -1,10 +1,12 @@
-use leptos::{ev::SubmitEvent, prelude::*};
+use gloo_net::http::Request;
+use leptos::{ev::SubmitEvent, prelude::*, task::spawn_local};
 use validator::Validate;
-use serde::Deserialize;
+use web_sys::window;
+use serde::{Deserialize, Serialize};
 
-use crate::components::{button::Button, email::Email, text::{ElementType, Text, TextSize, TextWeight}};
+use crate::{components::{button::Button, email::Email, text::{ElementType, Text, TextSize, TextWeight}}, env::{FORM_TEMPLATE, RESPONDER}};
 
-#[derive(Debug, Validate, Deserialize)]
+#[derive(Debug, Validate, Deserialize, Serialize)]
 pub struct FormData {
     #[validate(email(message = "Digite um e-mail válido"))]
     pub email: String,
@@ -14,6 +16,11 @@ struct FormErrors {
     email: Option<String>,
 }
 
+#[derive(Serialize)]
+struct Body {
+    pub formTemplate: String,
+    pub formAnswers: FormData,
+}
 
 #[component]
 pub fn Newsletter(
@@ -28,7 +35,7 @@ pub fn Newsletter(
         let form_data = FormData {
             email: email.get(),
         };
-        form_data.validate().map_err(|e| {
+        let data = form_data.validate().map_err(|e| {
             let mut temp_errors = FormErrors {
                 email: None,
             };
@@ -39,7 +46,29 @@ pub fn Newsletter(
                 }
             }
             set_errors.set(temp_errors);
-        }).ok();
+        });
+        if data.is_ok() {
+            let responder = RESPONDER;
+            let form_template = FORM_TEMPLATE;
+            let body = Body {
+                formTemplate: form_template.to_string(),
+                formAnswers: form_data
+            };
+            let json = serde_json::to_string(&body).expect("Form data serialization should work");
+            spawn_local(async move {
+                let res = Request::post("https://form-service.felipebosi.com/form-response")
+                    .header("Content-Type", "application/json")
+                    .header("responder", responder)
+                    .body(json)
+                    .unwrap()
+                    .send()
+                    .await;
+                match res {
+                    Ok(_) => window().unwrap().location().set_href("/circulo-vip/boas-vindas").unwrap(),
+                    Err(_) => todo!(),
+                }
+            })
+        }
     };
     view! {
         <div class={class.unwrap_or_default()}>
